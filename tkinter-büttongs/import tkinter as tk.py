@@ -31,6 +31,13 @@ def division():
     label3 = tk.Label(root, text=":")
     label3.pack()
 
+def potenzieren():
+    f = open("demo.txt", "a")
+    f.write("**")
+    f.close()
+    label3 = tk.Label(root, text="**")
+    label3.pack()
+
 
 #Klammern
 def klammerAuf():
@@ -47,13 +54,25 @@ def klammerZu():
     label3 = tk.Label(root, text=")")
     label3.pack()
 
+def leeren():
+    open('demo.txt', 'w').close()
+    label3 = tk.Label(root, text="geleert")
+    label3.pack()
+
 
 #Zahleneingabe:
 def Zahleneingabe():
     # print(eingabefeld_wert.get())
     zahl = float(eingabefeld_wert.get())
+    print(zahl)
+    ZahlStr = str(zahl)
+    f = open("demo.txt", "a")
+    f.write(ZahlStr)
+    f.close()
+    zahleneingabe = tk.Label(root, text=ZahlStr)
+    zahleneingabe.pack()
     
-    textausgabe.pack()
+ 
 
 
 root = tk.Tk()
@@ -75,6 +94,12 @@ schaltf3.pack()
 
 schaltf4 = tk.Button(root, text="division", command=division)
 schaltf4.pack()
+
+schaltf5 = tk.Button(root, text="Potenz", command=potenzieren)
+schaltf5.pack()
+
+schaltf6 = tk.Button(root, text="Leeren", command=leeren)
+schaltf6.pack()
 
 #Zahleneingabe:
 schaltf1 = tk.Button(root, text="Aktion durchführen", command=Zahleneingabe)
