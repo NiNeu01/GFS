@@ -8,12 +8,17 @@ display_text = tk.StringVar()
 display = tk.Label(window, textvariable=display_text)
 display.grid(row=0, columnspan=7)
 
+PlotterScript = "tkinter-büttongs\interpreter-test2.py"
+FormelPfad = "tkinter-büttongs\demo.txt"
 
+f = open(FormelPfad, "w")
+f.write("")
+f.close()
 
 
 
 def zahl0():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write("0")
     f.close()
     s = display_text.get()
@@ -21,7 +26,7 @@ def zahl0():
     display_text.set(s)
 
 def zahl1():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write("1")
     f.close()
     s = display_text.get()
@@ -29,7 +34,7 @@ def zahl1():
     display_text.set(s)
 
 def zahl2():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write("2")
     f.close()
     s = display_text.get()
@@ -37,7 +42,7 @@ def zahl2():
     display_text.set(s)
 
 def zahl3():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write("3")
     f.close()
     s = display_text.get()
@@ -45,7 +50,7 @@ def zahl3():
     display_text.set(s)
 
 def zahl4():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write("4")
     f.close()
     s = display_text.get()
@@ -53,7 +58,7 @@ def zahl4():
     display_text.set(s)
 
 def zahl5():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write("5")
     f.close()
     s = display_text.get()
@@ -61,7 +66,7 @@ def zahl5():
     display_text.set(s)
 
 def zahl6():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write("6")
     f.close()
     s = display_text.get()
@@ -69,7 +74,7 @@ def zahl6():
     display_text.set(s)
 
 def zahl7():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write("7")
     f.close()
     s = display_text.get()
@@ -77,7 +82,7 @@ def zahl7():
     display_text.set(s)
 
 def zahl8():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write("8")
     f.close()
     s = display_text.get()
@@ -85,7 +90,7 @@ def zahl8():
     display_text.set(s)
 
 def zahl9():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write("9")
     f.close()
     s = display_text.get()
@@ -97,7 +102,7 @@ def zahl9():
 
 
 def plus():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write("+")
     f.close()
     s = display_text.get()
@@ -105,7 +110,7 @@ def plus():
     display_text.set(s)
 
 def minus():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write("-")
     f.close()
     s = display_text.get()
@@ -113,7 +118,7 @@ def minus():
     display_text.set(s)
 
 def mal():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write("*")
     f.close()
     s = display_text.get()
@@ -121,7 +126,7 @@ def mal():
     display_text.set(s)
 
 def geteilt():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write(":")
     f.close()
     s = display_text.get()
@@ -131,7 +136,7 @@ def geteilt():
 
 
 def x():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write("x")
     f.close()
     s = display_text.get()
@@ -139,7 +144,7 @@ def x():
     display_text.set(s)
 
 def potenz():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write("**")
     f.close()
     s = display_text.get()
@@ -149,7 +154,7 @@ def potenz():
 
 
 def klammerAuf():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write("(")
     f.close()
     s = display_text.get()
@@ -157,7 +162,7 @@ def klammerAuf():
     display_text.set(s)
 
 def klammerZu():
-    f = open("demo.txt", "a")
+    f = open(FormelPfad, "a")
     f.write(")")
     f.close()
     s = display_text.get()
@@ -165,11 +170,17 @@ def klammerZu():
     display_text.set(s)
 
 def umwandeln():
-    subprocess.run(["python", "spaeteres-matplotlib.py"])
+    subprocess.run(["python", PlotterScript])
     
     s = 'In Graph umgewandelt'
     display_text.set(s)
 
+def DateiLeeren():
+    f = open(FormelPfad, "w")
+    f.write("")
+    f.close()
+    s = ''
+    display_text.set(s)
 
 
 buttong = tk.Button(window, text="1", height=5, width=5, command=zahl1)
@@ -233,10 +244,11 @@ buttong = tk.Button(window, text="Potenz", height=5, width=5, command=potenz)
 buttong.grid(row=3, column=6)
 
 
-buttong = tk.Button(window, text="In Graph umwandeln", height=5, width=5, command=umwandeln)
+buttong = tk.Button(window, text="In Graph umwandeln", height=5, width=15, command=lambda:[umwandeln(),DateiLeeren()])
 buttong.grid(row=4, column=7)
 
-
+buttong = tk.Button(window, text="Formel löschen", height=5, width=15, command=DateiLeeren)
+buttong.grid(row=3, column=7)
 
 
 
