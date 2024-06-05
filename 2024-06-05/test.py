@@ -2,20 +2,43 @@ import tkinter as tk
 import subprocess
 
 window = tk.Tk()
+window.title("f(x)=")
 
-# Creating main label
-display_text = tk.StringVar()
-display = tk.Label(window, textvariable=display_text)
-display.grid(row=0, columnspan=7)
-
+# Hier kann man die Dateipfade des Scripts zum Anzeigen des Graphen und der Textdatei zur Übergabe der Funktion definieren:
 PlotterScript = "interpreter-test2.py"
 FormelPfad = "demo.txt"
 
+# Hier sind Anpassungen des Aussehens der Buttons möglich
+ButtonBreite = 5
+ButtonBreite2 = 15
+ButtonHoehe = 5
+
+ButtonFont = ('Times 15')
+AnzeigeFont = ('Times 20')
+
+ButtonFarbeZahl = "Lawn Green"
+ButtonFarbeOperatoren = "khaki"
+ButtonFarbeKlammern = "SteelBlue1"
+ButtonFarbeAktionen = "firebrick2"
+
+AnzeigeFeldBreite = ButtonBreite * 3
+
+
+
+
+
+
+# Hier wird das Textfeld zur Anzeige der eingegebenen Funktion erstellt
+display_text = tk.StringVar()
+display = tk.Label(window, textvariable=display_text, bg="SteelBlue4", font=AnzeigeFont, width=AnzeigeFeldBreite)
+display.grid(row=0, columnspan=7)
+
+# Hier wird die Datei zur Übergabe der Formel geleert, um Fehler zu vermeiden:
 f = open(FormelPfad, "w")
 f.write("")
 f.close()
 
-
+# Hier werden die Funktionen, die von den Buttons aufgerufen werden, definiert:
 
 def zahl0():
     f = open(FormelPfad, "a")
@@ -182,72 +205,73 @@ def DateiLeeren():
     s = ''
     display_text.set(s)
 
+# Hier werden die Buttons erstellt, die in einer unsichtbaren Tabelle im Fenster positioniert werden.
 
-buttong = tk.Button(window, text="1", height=5, width=5, command=zahl1)
+buttong = tk.Button(window, text="1",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeZahl, command=zahl1)
 buttong.grid(row=1, column=0)
 
-buttong = tk.Button(window, text="2", height=5, width=5, command=zahl2)
+buttong = tk.Button(window, text="2",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeZahl, command=zahl2)
 buttong.grid(row=1, column=1)
 
-buttong = tk.Button(window, text="3", height=5, width=5, command=zahl3)
+buttong = tk.Button(window, text="3",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeZahl, command=zahl3)
 buttong.grid(row=1, column=2)
 
-buttong = tk.Button(window, text="4", height=5, width=5, command=zahl4)
+buttong = tk.Button(window, text="4",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeZahl, command=zahl4)
 buttong.grid(row=2, column=0)
 
-buttong = tk.Button(window, text="5", height=5, width=5, command=zahl5)
+buttong = tk.Button(window, text="5",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeZahl, command=zahl5)
 buttong.grid(row=2, column=1)
 
-buttong = tk.Button(window, text="6", height=5, width=5, command=zahl6)
+buttong = tk.Button(window, text="6",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeZahl, command=zahl6)
 buttong.grid(row=2, column=2)
 
-buttong = tk.Button(window, text="7", height=5, width=5, command=zahl7)
+buttong = tk.Button(window, text="7",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeZahl, command=zahl7)
 buttong.grid(row=3, column=0)
 
-buttong = tk.Button(window, text="8", height=5, width=5, command=zahl8)
+buttong = tk.Button(window, text="8",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeZahl, command=zahl8)
 buttong.grid(row=3, column=1)
 
-buttong = tk.Button(window, text="9", height=5, width=5, command=zahl9)
+buttong = tk.Button(window, text="9",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeZahl, command=zahl9)
 buttong.grid(row=3, column=2)
 
-buttong = tk.Button(window, text="0", height=5, width=5, command=zahl0)
+buttong = tk.Button(window, text="0",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeZahl, command=zahl0)
 buttong.grid(row=4, column=1)
 
 
-platzhalter = tk.Label(window, text="", height=5, width=5)
+platzhalter = tk.Label(window, text="",  width=ButtonBreite)
 platzhalter.grid(row=1, column=4)
 
 
-buttong = tk.Button(window, text="+", height=5, width=5, command=plus)
+buttong = tk.Button(window, text="+",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeOperatoren, command=plus)
 buttong.grid(row=1, column=5)
 
-buttong = tk.Button(window, text="-", height=5, width=5, command=minus)
+buttong = tk.Button(window, text="-",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeOperatoren, command=minus)
 buttong.grid(row=2, column=5)
 
-buttong = tk.Button(window, text="*", height=5, width=5, command=mal)
+buttong = tk.Button(window, text="*",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeOperatoren, command=mal)
 buttong.grid(row=3, column=5)
 
-buttong = tk.Button(window, text=":", height=5, width=5, command=geteilt)
+buttong = tk.Button(window, text=":",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeOperatoren, command=geteilt)
 buttong.grid(row=4, column=5)
 
 
-buttong = tk.Button(window, text="(", height=5, width=5, command=klammerAuf)
+buttong = tk.Button(window, text="(",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeKlammern, command=klammerAuf)
 buttong.grid(row=1, column=6)
 
-buttong = tk.Button(window, text=")", height=5, width=5, command=klammerZu)
+buttong = tk.Button(window, text=")",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeKlammern, command=klammerZu)
 buttong.grid(row=2, column=6)
 
-buttong = tk.Button(window, text="X", height=5, width=5, command=x)
+buttong = tk.Button(window, text="X",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeKlammern, command=x)
 buttong.grid(row=1, column=7)
 
-buttong = tk.Button(window, text="Potenz", height=5, width=5, command=potenz)
+buttong = tk.Button(window, text="Potenz",  width=ButtonBreite, font=ButtonFont, bg=ButtonFarbeKlammern, command=potenz)
 buttong.grid(row=3, column=6)
 
 
-buttong = tk.Button(window, text="In Graph umwandeln", height=5, width=15, command=lambda:[umwandeln(),DateiLeeren()])
+buttong = tk.Button(window, text="In Graph umwandeln",  width=ButtonBreite2, font=ButtonFont, bg=ButtonFarbeAktionen, command=lambda:[umwandeln(),DateiLeeren()])
 buttong.grid(row=4, column=7)
 
-buttong = tk.Button(window, text="Formel löschen", height=5, width=15, command=DateiLeeren)
+buttong = tk.Button(window, text="Formel löschen",  width=ButtonBreite2, font=ButtonFont, bg=ButtonFarbeAktionen, command=DateiLeeren)
 buttong.grid(row=3, column=7)
 
 
